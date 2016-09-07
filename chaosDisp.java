@@ -11,7 +11,7 @@ public class chaosDisp extends JFrame implements ActionListener, KeyListener{
     private JTextArea mainOut, hOut;
     private JPanel controlZone;
     private JButton cw, ccw, flip, solve, newPuzzle, quit, akts, amkts, solveWithAStar;
-    private boolean upPressed, downPressed, leftPressed, rightPressed, pressed1, pressed2, pressed3, pressed4, pressed5, pressed6, solving;
+    private boolean upPressed, downPressed, leftPressed, rightPressed, pressed1, pressed2, pressed3, pressed4, pressed5, pressed6, solving, aktsPressed, amktsPressed;
     private boolean toldThem = false;
     private long lastMoveTime = 0;
     private long delay = 500;
@@ -57,6 +57,8 @@ public class chaosDisp extends JFrame implements ActionListener, KeyListener{
         pressed5 = false;
         pressed6 = false;
         solving = false;
+	aktsPressed = false;
+	amktsPressed = false;
     }
     private void checkKeys(){
         if((upPressed || downPressed) && System.currentTimeMillis()-lastMoveTime >= delay){
@@ -238,7 +240,13 @@ public class chaosDisp extends JFrame implements ActionListener, KeyListener{
             toldThem = false;
         }else if(e.getSource().equals(quit)){
             System.exit(0);
+        }else if(e.getSource().equals(akts)){
+            akts = true;
+        }else if(e.getSource().equals(amkts)){
+            amkts = true;
         }
+
+
         updateScreen();
     }
     @Override
